@@ -1,0 +1,36 @@
+{
+  "name": "edu-platform/sso",
+  "description": "Package for sso auth between projects",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Edu\\Sso\\": "src/"
+    }
+  },
+  "extra": {
+    "allow_package_name_mismatch": true,
+    "laravel": {
+      "providers": [
+        "SocialiteProviders\\Manager\\ServiceProvider"
+      ],
+      "aliases": {
+        "Socialite": "Laravel\\Socialite\\Facades\\Socialite::class"
+      }
+    }
+  },
+  "require": {
+    "php": "^7.4",
+    "laravel/framework": "^7.0",
+    "laravel/passport": "^9.2",
+    "laravel/socialite": "^4.3",
+    "socialiteproviders/laravelpassport": "^1.0"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "phpstan/phpstan": "^0.12.25"
+  },
+  "scripts": {
+    "phpstan": "./vendor/bin/phpstan analyse ./src --memory-limit=2G"
+  }
+}
