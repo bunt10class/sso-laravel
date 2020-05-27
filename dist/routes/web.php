@@ -2,5 +2,5 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/sso/' . config('sso.project') . '/redirect', 'SsoController@redirectToProvider');
-Route::get('/sso/' . config('sso.project') . '/callback', 'SsoController@handleProviderCallback');
+Route::get(config('sso.routes.redirect'), 'Edu\Sso\Http\Controllers\SsoController@redirectToProvider');
+Route::get(config('sso.routes.callback'), 'Edu\Sso\Http\Controllers\SsoController@handleProviderCallback');

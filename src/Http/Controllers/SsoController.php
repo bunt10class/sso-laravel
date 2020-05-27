@@ -2,9 +2,10 @@
 
 namespace Edu\Sso\Http\Controllers;
 
-use Edu\Sso\Repositories\AuthServiceInterface;
-use Edu\Sso\Repositories\UserRepositoryInterface;
+use Edu\Sso\Interfaces\AuthServiceInterface;
+use Edu\Sso\Interfaces\UserRepositoryInterface;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Controller;
 use Laravel\Socialite\Facades\Socialite;
 
 class SsoController extends Controller
@@ -22,14 +23,15 @@ class SsoController extends Controller
      * получение пользователя авторизованного в стороннем приложении,
      * создание пользователя в данном приложении с ролью админа если это необходимо,
      * и аутентификация
+     * @param AuthServiceInterface $authService
+     * @param UserRepositoryInterface $userRepo
      * @return RedirectResponse
      */
-    public function handleProviderCallback(): RedirectResponse
+    public function handleProviderCallback(
+        AuthServiceInterface $authService,
+        UserRepositoryInterface $userRepo
+    ): RedirectResponse
     {
-        /** @var AuthServiceInterface $authService */
-        $authService = resolve(AuthServiceInterface::class);
-
-        /** @var RedirectResponse $redirect */
         $redirect = $authService->getRedirectResponse();
         
         try {
@@ -42,9 +44,6 @@ class SsoController extends Controller
         if (is_null($email)) {
             return $redirect->with('error', 'User from another application doesn\'t have email');
         }
-
-        /** @var UserRepositoryInterface $userRepo */
-        $userRepo = resolve(UserRepositoryInterface::class);
 
         $user = $userRepo->findUserByEmail($email);
         if (is_null($user)) {

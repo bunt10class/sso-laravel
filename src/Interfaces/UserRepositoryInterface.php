@@ -1,6 +1,6 @@
 <?php
 
-namespace Edu\Sso\Repositories;
+namespace Edu\Sso\Interfaces;
 
 use Laravel\Socialite\Contracts\User;
 
