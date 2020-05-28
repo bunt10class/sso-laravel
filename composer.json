@@ -11,7 +11,11 @@
     "allow_package_name_mismatch": true,
     "laravel": {
       "providers": [
-        "SocialiteProviders\\Manager\\ServiceProvider"
+        "SocialiteProviders\\Manager\\ServiceProvider",
+        "Edu\\Sso\\Providers\\SsoAuthServiceProvider",
+        "Edu\\Sso\\Providers\\SsoEventServiceProvider",
+        "Edu\\Sso\\Providers\\SsoRouteServiceProvider",
+        "Edu\\Sso\\Providers\\SsoServiceProvider"
       ],
       "aliases": {
         "Socialite": "Laravel\\Socialite\\Facades\\Socialite::class"

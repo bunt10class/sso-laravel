@@ -4,8 +4,8 @@ namespace Edu\Sso\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Edu\Sso\Exceptions\SsoNotExistsMethodException;
 use Edu\Sso\Interfaces\AuthServiceInterface;
+use Exception;
 
 class CheckSsoRoutes
 {
@@ -13,7 +13,7 @@ class CheckSsoRoutes
      * @param Request $request
      * @param Closure $next
      * @return mixed
-     * @throws SsoNotExistsMethodException
+     * @throws Exception
      */
     public function handle(Request $request, Closure $next)
     {
@@ -37,7 +37,7 @@ class CheckSsoRoutes
      * @param Request $request
      * @param Closure $next
      * @return mixed
-     * @throws SsoNotExistsMethodException
+     * @throws Exception
      */
     protected function callMiddleware(Request $request, Closure $next)
     {
@@ -45,7 +45,7 @@ class CheckSsoRoutes
         $middleware = resolve($access['class']);
         $method = 'handle';
         if (!method_exists($middleware, $method)) {
-            throw new SsoNotExistsMethodException($access['class'], $method, 'check access for sso for logged in user');
+            throw new Exception('Class: "' . $access['class'] . '" doesn\'t have method: "' . $method . '". Check your sso config, that class must be middleware');
         }
 
         return $middleware->$method($request, fn ($request) => $next($request), $access['enable_to']);

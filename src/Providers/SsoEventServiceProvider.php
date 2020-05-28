@@ -2,10 +2,10 @@
 
 namespace Edu\Sso\Providers;
 
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider;
 use SocialiteProviders\Manager\SocialiteWasCalled;
 
-class EventServiceProvider extends ServiceProvider
+class SsoEventServiceProvider extends EventServiceProvider
 {
     protected $listen = [
         SocialiteWasCalled::class => [

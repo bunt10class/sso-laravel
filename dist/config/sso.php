@@ -1,10 +1,10 @@
 <?php
 
-$applicationName = env('SSO_NAME', 'application_name');
-
 return [
-    'application_name' => $applicationName,
-    'application_host' => env('SSO_HOST', 'http://application.xx'),
+    'enabled' => env('SSO_ENABLED', false),
+
+    'application_name' => env('SSO_APPLICATION_NAME', 'application_name'),
+    'application_redirect_endpoint' => env('SSO_APPLICATION_REDIRECT_ENDPOINT', 'http://application.xx/sso/callback'),
 
     'classes' => [
         'user_repository' => 'Sso\\Repositories\\SsoUserRepository',
@@ -14,10 +14,5 @@ return [
     'access_middleware' => [
         'class' => 'CheckUserRoleExample',
         'enable_to' => 'admin',
-    ],
-
-    'routes' => [
-        'redirect' => '/sso/'. $applicationName . '/redirect',
-        'callback' => '/sso/'. $applicationName . '/callback',
     ],
 ];

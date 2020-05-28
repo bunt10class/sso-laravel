@@ -2,12 +2,25 @@
 
 namespace Edu\Sso\Providers;
 
+use Edu\Sso\Console\CreatePassportClient;
+use Illuminate\Support\ServiceProvider;
 use Edu\Sso\Interfaces\AuthServiceInterface;
 use Edu\Sso\Interfaces\UserRepositoryInterface;
-use Illuminate\Support\ServiceProvider;
 
-class InterfacesServiceProvider extends ServiceProvider
+class SsoServiceProvider extends ServiceProvider
 {
+
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__ . '/../../dist/config/sso.php' => config_path('sso.php'),
+        ]);
+
+        $this->commands([
+            CreatePassportClient::class,
+        ]);
+    }
+
     /**
      * @return void
      */

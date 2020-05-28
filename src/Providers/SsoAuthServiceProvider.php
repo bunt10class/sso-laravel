@@ -2,11 +2,11 @@
 
 namespace Edu\Sso\Providers;
 
-use Edu\Sso\Models\OauthClient;
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
 use Laravel\Passport\Passport;
+use Edu\Sso\Models\OauthClient;
 
-class AuthServiceProvider extends ServiceProvider
+class SsoAuthServiceProvider extends AuthServiceProvider
 {
     /**
      * @return void
