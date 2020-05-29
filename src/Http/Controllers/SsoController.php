@@ -2,11 +2,11 @@
 
 namespace Edu\Sso\Http\Controllers;
 
+use Illuminate\Routing\Controller;
+use Illuminate\Http\RedirectResponse;
+use Laravel\Socialite\Facades\Socialite;
 use Edu\Sso\Interfaces\AuthServiceInterface;
 use Edu\Sso\Interfaces\UserRepositoryInterface;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Controller;
-use Laravel\Socialite\Facades\Socialite;
 
 class SsoController extends Controller
 {

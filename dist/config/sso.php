@@ -7,12 +7,18 @@ return [
     'application_redirect_endpoint' => env('SSO_APPLICATION_REDIRECT_ENDPOINT', 'http://application.xx/sso/callback'),
 
     'classes' => [
-        'user_repository' => 'Sso\\Repositories\\SsoUserRepository',
-        'auth_service' => 'Sso\\Services\\SsoAuthService',
+        'user_repository' => 'UserRepository',
+        'auth_service' => 'AuthService',
+    ],
+    
+    'get_logged_user_route' => [
+        'uri' => env('SSO_URI_GIVE_LOGGED_USER', 'api/me'),
+        'class' => 'AuthController',
+        'method' => 'me'
     ],
 
     'access_middleware' => [
-        'class' => 'CheckUserRoleExample',
+        'class' => 'CheckUserRoleMiddleware',
         'enable_to' => 'admin',
     ],
 ];

@@ -21,7 +21,7 @@ class CheckSsoRoutes
             return $next($request);
         }
 
-        if (!config('services.sso_enabled')) {
+        if (!config('sso.enabled')) {
             $authService = resolve(AuthServiceInterface::class);
             return $authService->getRedirectResponse();
         }
