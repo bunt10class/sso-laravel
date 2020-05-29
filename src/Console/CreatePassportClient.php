@@ -13,10 +13,14 @@ class CreatePassportClient extends Command
 
     public function handle(ClientRepository $oauthClientRepo)
     {
-        $oauthClientRepo->create(
+        $client = $oauthClientRepo->create(
             null,
             config('sso.application_name'),
             config('sso.application_redirect_endpoint'),
         );
+
+        $this->info('Client data for ' . config('sso.application_name') . ':');
+        $this->info('id: ' . $client->id);
+        $this->info('secret: ' . $client->secret);
     }
 }
