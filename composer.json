@@ -1,5 +1,5 @@
 {
-  "name": "edu-platform/sso",
+  "name": "edu-platform/lms-sso",
   "description": "Package for sso auth between projects",
   "type": "library",
   "autoload": {
