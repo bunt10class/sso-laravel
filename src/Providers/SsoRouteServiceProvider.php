@@ -13,8 +13,5 @@ class SsoRouteServiceProvider extends RouteServiceProvider
             ->namespace('Edu\Sso\Http\Controllers')
             ->middleware(['web'])
             ->group(__DIR__ . '/../../dist/routes/web.php');
-
-        Route::middleware(['api'])
-            ->group(__DIR__ . '/../../dist/routes/api.php');
     }
 }

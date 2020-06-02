@@ -18,7 +18,7 @@ class LoginUserByBearer
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->is(config('sso.get_logged_user_route.uri'))) {
+        if ($request->is(config('sso.uri_give_logged_user'))) {
             /** @var Token $token */
             $token = $this->getOauthAccessToken($request->header('Authorization'));
             if (is_null($token)) {
