@@ -9,7 +9,7 @@ class SsoRouteServiceProvider extends RouteServiceProvider
 {
     public function map()
     {
-        Route::prefix('/sso/' . config('sso.application_name'))
+        Route::prefix('/sso/' . config('sso.app_name'))
             ->namespace('Edu\Sso\Http\Controllers')
             ->middleware(['web'])
             ->group(__DIR__ . '/../../dist/routes/web.php');
