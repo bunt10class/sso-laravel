@@ -42,6 +42,9 @@ class CheckSsoRoutes
     protected function callMiddleware(Request $request, Closure $next)
     {
         $access = config('sso.access_middleware');
+        if (!$access['class']) {
+            return $next($request);
+        }
         $middleware = resolve($access['class']);
         $method = 'handle';
         if (!method_exists($middleware, $method)) {
