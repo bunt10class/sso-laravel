@@ -51,6 +51,6 @@ class CheckSsoRoutes
             throw new Exception('Class: "' . $access['class'] . '" doesn\'t have method: "' . $method . '". Check your sso config, that class must be middleware');
         }
 
-        return $middleware->$method($request, fn ($request) => $next($request), $access['enable_to']);
+        return $middleware->$method($request, $next, $access['enable_to']);
     }
 }
