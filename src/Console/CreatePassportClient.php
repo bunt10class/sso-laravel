@@ -16,7 +16,7 @@ class CreatePassportClient extends Command
         $client = $oauthClientRepo->create(
             null,
             config('sso.app_name'),
-            config('sso.app_redirect_endpoint'),
+            config('sso.app_redirect_endpoint')
         );
 
         $this->info('Client data for ' . config('sso.app_name') . ':');
