@@ -1,6 +1,6 @@
 {
-  "name": "edu-platform/lms-sso",
-  "description": "Package for sso auth between projects",
+  "name": "no/laravel-sso",
+  "description": "Package for sso auth between two projects",
   "type": "library",
   "autoload": {
     "psr-4": {
